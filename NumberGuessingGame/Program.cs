@@ -15,16 +15,23 @@
             while (guess != numberToGuess) 
             {
                 Console.Write("Enter your guess: ");
-                guess = Convert.ToInt32(Console.ReadLine()); 
+                try
+                {
+                    guess = Convert.ToInt32(Console.ReadLine());
 
-                if (guess < 1 || guess > 100)
-                    Console.WriteLine("Enter a valid number between 1 and 100!");
-                else if (guess < numberToGuess)
-                    Console.WriteLine("Too low! Try again.");
-                else if (guess > numberToGuess)
-                    Console.WriteLine("Too high! Try again.");
-                else
-                    Console.WriteLine("Congratulations! You guessed the number.");
+                    if (guess < 1 || guess > 100)
+                        Console.WriteLine("Enter a valid number between 1 and 100!");
+                    else if (guess < numberToGuess)
+                        Console.WriteLine("Too low! Try again.");
+                    else if (guess > numberToGuess)
+                        Console.WriteLine("Too high! Try again.");
+                    else
+                        Console.WriteLine("Congratulations! You guessed the number.");
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Enter a valid number!");
+                }
             }
 
             Console.Write("Do you want to play again? (yes/no): ");
